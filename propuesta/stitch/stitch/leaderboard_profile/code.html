@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#72739e",
+              "surface-variant": "#dbd9ff",
+              "on-error": "#ffefef",
+              "on-tertiary-container": "#005d2c",
+              "on-secondary-fixed": "#5d006d",
+              "background": "#f8f5ff",
+              "inverse-on-surface": "#9999c6",
+              "surface-dim": "#d1d0ff",
+              "on-surface-variant": "#575881",
+              "tertiary": "#006a33",
+              "surface-container": "#e8e6ff",
+              "on-tertiary-fixed": "#004820",
+              "error-container": "#f74b6d",
+              "on-primary-fixed-variant": "#002376",
+              "on-tertiary": "#cdffd3",
+              "on-primary-container": "#001b61",
+              "primary-dim": "#0041c7",
+              "secondary-fixed-dim": "#f9a7ff",
+              "tertiary-dim": "#005c2b",
+              "primary-fixed": "#809bff",
+              "outline-variant": "#a9a9d7",
+              "on-background": "#2a2b51",
+              "secondary-fixed": "#fcbcff",
+              "surface": "#f8f5ff",
+              "primary-fixed-dim": "#6c8cff",
+              "surface-tint": "#004be2",
+              "error": "#b41340",
+              "tertiary-fixed": "#3fff8b",
+              "surface-container-low": "#f2efff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e1e0ff",
+              "tertiary-container": "#3fff8b",
+              "on-secondary": "#ffeefb",
+              "primary": "#004be2",
+              "on-error-container": "#510017",
+              "primary-container": "#809bff",
+              "surface-container-highest": "#dbd9ff",
+              "error-dim": "#a70138",
+              "secondary-dim": "#89089e",
+              "inverse-primary": "#6889ff",
+              "secondary": "#9720ab",
+              "inverse-surface": "#08082f",
+              "on-surface": "#2a2b51",
+              "secondary-container": "#fcbcff",
+              "on-primary": "#f2f1ff",
+              "on-secondary-fixed-variant": "#8a0b9f",
+              "on-secondary-container": "#7c0091",
+              "surface-bright": "#f8f5ff",
+              "on-primary-fixed": "#000000",
+              "tertiary-fixed-dim": "#24f07e",
+              "on-tertiary-fixed-variant": "#006832"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f5ff;
+            color: #2a2b51;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#f8f5ff] dark:bg-slate-950/80 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-[0_32px_32px_-12px_rgba(42,43,81,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black italic bg-gradient-to-br from-[#004be2] to-[#809bff] bg-clip-text text-transparent brand-font">
+                Quizzly Pulse
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#2a2b51] dark:text-slate-400 font-medium hover:text-[#9720ab] transition-colors duration-300" href="#">Home</a>
+<a class="text-[#004be2] dark:text-blue-400 border-b-2 border-[#004be2] pb-1 font-bold" href="#">Leaderboard</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-[#2a2b51]">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="active:scale-95 transition-transform text-[#2a2b51]">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow max-w-7xl mx-auto w-full px-6 py-8">
+<!-- Profile Header Section (Bento Style) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+<!-- Main Profile Card -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-lg p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full -mr-32 -mt-32"></div>
+<div class="relative">
+<img alt="User Avatar" class="w-32 h-32 rounded-full border-4 border-surface-container shadow-xl" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_HM3oJQ_6s93khz6a5bYuba14YPm6N7jPe1cnniwPXEERtOxbpmj6g5rPAG6MS2SVg95tQ0pu_WsWibr8v54Zyg59YrCH4QP2sSd_2DDeJr6NtoaObeVL5OTJu-usgyLUgJzoIfq_lV-znEJNI9gZQvcMzQgGqrmWb2DaHuoKQDNqdJnBsc-gG7ln1dtjeZQxzK_3FuHcyJ27HGrml9KSSVn4rTaGx61nDbV-5iaHBzzrhAlFXqWSMyf-DpTPR4O3ufqG74N6h9M"/>
+<div class="absolute bottom-1 right-1 bg-tertiary p-2 rounded-full border-4 border-white">
+<span class="material-symbols-outlined text-white text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-grow text-center md:text-left z-10">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Alex Rivera</h1>
+<p class="text-on-surface-variant font-medium mb-4 flex items-center justify-center md:justify-start gap-2">
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Master Polymath</span>
+<span class="text-sm">• Level 42</span>
+</p>
+<div class="flex flex-wrap gap-3 justify-center md:justify-start">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-semibold active:scale-95 transition-transform">
+                            Edit Profile
+                        </button>
+<button class="text-on-surface hover:bg-surface-container transition-colors px-6 py-2 rounded-md font-semibold">
+                            Share Stats
+                        </button>
+</div>
+</div>
+</div>
+<!-- Fast Stats (Bento) -->
+<div class="lg:col-span-4 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low rounded-lg p-6 flex flex-col justify-center items-center text-center">
+<span class="label-sm uppercase tracking-widest text-on-surface-variant font-bold mb-1">Rank</span>
+<span class="text-3xl font-black text-primary">#142</span>
+</div>
+<div class="bg-secondary/10 rounded-lg p-6 flex flex-col justify-center items-center text-center border-outline-variant/10">
+<span class="label-sm uppercase tracking-widest text-secondary font-bold mb-1">Streak</span>
+<span class="text-3xl font-black text-secondary">12 🔥</span>
+</div>
+<div class="col-span-2 bg-surface-container-highest rounded-lg p-6">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold text-on-surface">Weekly XP Goal</span>
+<span class="text-primary font-black">85%</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-secondary-fixed-dim" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats & Leaderboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Personal Detailed Stats -->
+<aside class="lg:col-span-4 space-y-8">
+<div>
+<h3 class="text-xl font-bold mb-6 text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+                        Personal Stats
+                    </h3>
+<div class="space-y-4">
+<div class="bg-surface-container rounded-lg p-5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="quiz">quiz</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-tighter">Quizzes Taken</p>
+<p class="text-lg font-bold text-on-surface">1,284</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="target">target</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-tighter">Avg. Accuracy</p>
+<p class="text-lg font-bold text-on-surface">92.4%</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="military_tech">military_tech</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-tighter">Top Category</p>
+<p class="text-lg font-bold text-on-surface">Astrophysics</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievements Preview -->
+<div class="bg-surface-container-low rounded-lg p-6">
+<h3 class="text-lg font-bold mb-4">Recent Badges</h3>
+<div class="flex gap-4">
+<div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm" title="Speed Demon">
+<span class="material-symbols-outlined text-error text-3xl" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm" title="Night Owl">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="dark_mode" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+</div>
+<div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm" title="Social Bee">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Column: Leaderboard -->
+<section class="lg:col-span-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<h2 class="text-3xl font-extrabold text-on-surface">Leaderboard</h2>
+<!-- Tabbed Interface -->
+<div class="flex bg-surface-container-high p-1 rounded-full w-fit">
+<button class="px-8 py-2 rounded-full text-sm font-bold bg-white text-primary shadow-sm transition-all">Global</button>
+<button class="px-8 py-2 rounded-full text-sm font-bold text-on-surface-variant hover:text-on-surface transition-all">Friends</button>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="space-y-3">
+<!-- Top 3 Podium (Optional highlight but keeping list consistency for ranked feel) -->
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-[0_4px_20px_-4px_rgba(0,75,226,0.1)] border-l-4 border-yellow-400">
+<div class="w-8 text-center font-black text-2xl text-yellow-500 italic">1</div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Female avatar with bright expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjP30Rv7XPfa6-_m1Y_WmagHI5uUmriY2EKaQSlmrgAX00ZPoKH83hHetgWAHLmHLR8zxNTzBC71milce41QQiNUmo6Oq-PFMobV8U0dtjB_mHqsSf_HVPFXomUExfQMrUxLpNGHW62tXhnxduU3KiMblaSgqdvjmmPfTdj5VZdo7Me6qoccqXuHq1x7v4oYgAfmV_webU7oTxZYnDBle9h1QcvpAigI5G9PKE6vTNP5ffRrgOW8nftiS5k4HgJkCddBUIDsE4nac"/>
+<div class="flex-grow">
+<p class="font-bold text-on-surface">Sarah "Synapse" Chen</p>
+<p class="text-xs text-on-surface-variant">42.8k XP • 98% Acc</p>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-yellow-500" data-icon="emoji_events" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-sm border-l-4 border-slate-300">
+<div class="w-8 text-center font-black text-2xl text-slate-400 italic">2</div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIvaC35RQ8oVQJxbUicGtkP7bUQQVFVADNRhldsNalnYm1noGg2KZsu6yrsVMgESX-c_D9_hHy4hk3zL3oMbMDVhZDHG1piaqroQPhpgWxkJS-dZLYg79YpCyplkymA7PPuXgn4nv0hF3LE10syu2TPuCk0hRk9RLjnMmhv8HXY89Y6fJ8Yrrpf27EfJuo-2CnwAya6J4JzCpj-9SXSDqkJ5un3L8p2lvnGy2vs5bA6iDJ7qjp11VTxMdxZIE4Yzxl7xXig3j-Sco"/>
+<div class="flex-grow">
+<p class="font-bold text-on-surface">Marcus Thorne</p>
+<p class="text-xs text-on-surface-variant">41.2k XP • 95% Acc</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-sm border-l-4 border-orange-400">
+<div class="w-8 text-center font-black text-2xl text-orange-400 italic">3</div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Artistic portrait of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuuNXg98pDC7uOzGu5caqqDnXwhyf2yDQ_X2n3pViDeMzETtzgLzt9Ven-NXYyIQ5dnlI3QEoT6qK5MjrTh1cBMVcSg24PrNq7dxk_4OQ6_lLuiQv8kfp3rWjkSxCG_2UOBnVyH8b12Ewvz4HLN7dRgB1kVxut0Ibl5MhHHUFEF1Dn8WS8beUF2jA-zHKthQ__iKIzHo1eDF489l2YVSRvKlV_zekhHzdxNRQfHTmapIP2xRMP-3VZDHy_dQ5hXug_62bGHIx70Gw"/>
+<div class="flex-grow">
+<p class="font-bold text-on-surface">Lena Volkov</p>
+<p class="text-xs text-on-surface-variant">39.5k XP • 94% Acc</p>
+</div>
+</div>
+<!-- Divider/Ellipsis space -->
+<div class="flex justify-center py-4">
+<span class="material-symbols-outlined text-outline-variant" data-icon="more_horiz">more_horiz</span>
+</div>
+<!-- "Your Ranking" Highlighted -->
+<div class="bg-primary/5 rounded-lg p-6 flex items-center gap-6 ring-2 ring-primary ring-inset shadow-xl transform scale-[1.02]">
+<div class="w-8 text-center font-black text-xl text-primary">142</div>
+<div class="relative">
+<img class="w-14 h-14 rounded-full border-2 border-primary" data-alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ2hkC5DGGTfGoZDg6RnHhpp6m958B_ZvjbqRlsgV-dLU6N9CKkfLJRvP3rsnqE54lmjehGQaGWUwtukj0fiz3QiYOYjrxmT4uLTmRka6KkhiXTcJoq4hVIuzcbycAdJU5dlCbI5jmKoHqs5IQR424t6fynklmEI3K-K1rbkzD9g9HK-yN9G0F-J6X8zRlOoo_-fXwBk733fToDO8aj_ctI4QrZst6x62OgzSkMYSbIqjzjeQ3Bx7Hhok7K-EZsPUiwAON-pq_TGg"/>
+<div class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] font-black px-2 py-0.5 rounded-full uppercase">YOU</div>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-primary text-lg">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant font-medium">18.4k XP • 92% Acc</p>
+</div>
+<div class="text-right">
+<div class="flex items-center text-tertiary gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-sm font-bold">+12</span>
+</div>
+</div>
+</div>
+<!-- Other users -->
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-sm">
+<div class="w-8 text-center font-bold text-on-surface-variant">143</div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Corporate headshot of a woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-te579gHHxD0ZNJ6TDBfR_ui_IqTInSGIZ1b7n_xhkTornfGJN3azTI5CiWT9DK7AC4CG21-8sDr38U1JKX9C4cFaRktJTxLZpif49WI1QJUH0LTnshmIuNhelhr8cQJW5NHuS5nibUHaKzlnNsCv60X49PI7KAkiXz5DFfEuCkL-k-GHoSr76LGgqnwTxrCBIYcataTACQvjmM9BawanXWp29ZcURHSU8NGBKdqj_Lr7NhGVQs6680v42niVgMXUuQbUOjHII0k"/>
+<div class="flex-grow">
+<p class="font-bold text-on-surface">Jordan Smyth</p>
+<p class="text-xs text-on-surface-variant">18.2k XP • 89% Acc</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-sm">
+<div class="w-8 text-center font-bold text-on-surface-variant">144</div>
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a bearded man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApy34L6lTCDdD4JSzB6dBx-TOtaQrlaEUFNrno_PHgkPEP1aYX2Y7xdPKD3tG6XEDZzGQlRZI30PRgalJtEYDixboqIXpTysi9hz2BygYUP9_AGOi7cxzkWK4MJ5frNX5jM6TaHFeRkOTbUmht_z78OPfge84HWkGV8l2lNrog5J5UF6sO5QQ-sJh2nVkAaS-TVfZCKjmd6czICyLkEYm0E_slVZ5z0-zlrLtNtu_sxwjPkFwbGwOHRYkyyWj2U5xIaOw3Ghx3h2Y"/>
+<div class="flex-grow">
+<p class="font-bold text-on-surface">Casey Wright</p>
+<p class="text-xs text-on-surface-variant">17.9k XP • 91% Acc</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-8 py-3 rounded-full font-bold transition-all flex items-center gap-2">
+                        View More Rankings
+                        <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f2efff] dark:bg-slate-900 full-width py-12 mt-auto tonal-shift">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6">
+<div class="font-['Plus_Jakarta_Sans'] font-bold text-[#2a2b51] dark:text-white">
+                Quizzly Pulse
+            </div>
+<div class="font-['Inter'] text-sm tracking-wide text-[#2a2b51]/60 dark:text-slate-500">
+                © 2024 Quizzly Pulse. Elevate your intellect.
+            </div>
+<div class="flex gap-6">
+<a class="text-[#2a2b51]/60 dark:text-slate-500 font-['Inter'] text-sm tracking-wide hover:text-[#004be2] underline decoration-2 underline-offset-4 transition-all duration-200" href="#">Privacy</a>
+<a class="text-[#2a2b51]/60 dark:text-slate-500 font-['Inter'] text-sm tracking-wide hover:text-[#004be2] underline decoration-2 underline-offset-4 transition-all duration-200" href="#">Terms</a>
+<a class="text-[#2a2b51]/60 dark:text-slate-500 font-['Inter'] text-sm tracking-wide hover:text-[#004be2] underline decoration-2 underline-offset-4 transition-all duration-200" href="#">Support</a>
+<a class="text-[#2a2b51]/60 dark:text-slate-500 font-['Inter'] text-sm tracking-wide hover:text-[#004be2] underline decoration-2 underline-offset-4 transition-all duration-200" href="#">Admin</a>
+</div>
+</div>
+</footer>
+</body></html>
