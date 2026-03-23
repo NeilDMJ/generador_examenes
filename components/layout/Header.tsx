@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
 
@@ -22,9 +23,7 @@ export default function Header() {
           <Link
             href="/dashboard"
             className="text-2xl font-black italic bg-gradient-to-br from-primary to-primary-fixed bg-clip-text text-transparent tracking-tight"
-          >
-            Quizzly Pulse
-          </Link>
+          ></Link>
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map(({ href, label }) => {
               const isActive =

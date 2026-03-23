@@ -39,9 +39,24 @@ const topPlayers = [
 ];
 
 const personalStats = [
-  { icon: "quiz", color: "text-primary", label: "Quizzes Jugados", value: "1,284" },
-  { icon: "target", color: "text-tertiary", label: "Precisión Promedio", value: "92.4%" },
-  { icon: "military_tech", color: "text-secondary", label: "Categoría Favorita", value: "Astrofísica" },
+  {
+    icon: "quiz",
+    color: "text-primary",
+    label: "Quizzes Jugados",
+    value: "1,284",
+  },
+  {
+    icon: "target",
+    color: "text-tertiary",
+    label: "Precisión Promedio",
+    value: "92.4%",
+  },
+  {
+    icon: "military_tech",
+    color: "text-secondary",
+    label: "Categoría Favorita",
+    value: "Astrofísica",
+  },
 ];
 
 const badges = [
@@ -56,7 +71,7 @@ export default function LeaderboardPage() {
       {/* Encabezado de Perfil */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
         <div className="lg:col-span-8 bg-surface-container-lowest rounded-lg p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full -mr-32 -mt-32" />
+          <div className="absolute top-0 right-1 w-64 h-64 bg-background rounded-full -mr-32 -mt-32" />
           <div className="relative">
             <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_HM3oJQ_6s93khz6a5bYuba14YPm6N7jPe1cnniwPXEERtOxbpmj6g5rPAG6MS2SVg95tQ0pu_WsWibr8v54Zyg59YrCH4QP2sSd_2DDeJr6NtoaObeVL5OTJu-usgyLUgJzoIfq_lV-znEJNI9gZQvcMzQgGqrmWb2DaHuoKQDNqdJnBsc-gG7ln1dtjeZQxzK_3FuHcyJ27HGrml9KSSVn4rTaGx61nDbV-5iaHBzzrhAlFXqWSMyf-DpTPR4O3ufqG74N6h9M"
@@ -118,7 +133,9 @@ export default function LeaderboardPage() {
           </div>
           <div className="col-span-2 bg-surface-container-highest rounded-lg p-6">
             <div className="flex justify-between items-center mb-4">
-              <span className="font-bold text-on-surface">Meta Semanal de XP</span>
+              <span className="font-bold text-on-surface">
+                Meta Semanal de XP
+              </span>
               <span className="text-primary font-black">85%</span>
             </div>
             <div className="w-full h-3 bg-surface-container rounded-full overflow-hidden">
@@ -136,7 +153,9 @@ export default function LeaderboardPage() {
         <aside className="lg:col-span-4 space-y-8">
           <div>
             <h3 className="text-xl font-bold mb-6 text-on-surface flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary">analytics</span>
+              <span className="material-symbols-outlined text-primary">
+                analytics
+              </span>
               Estadísticas Personales
             </h3>
             <div className="space-y-4">
@@ -154,7 +173,9 @@ export default function LeaderboardPage() {
                     <p className="text-xs text-on-surface-variant font-bold uppercase tracking-tighter">
                       {s.label}
                     </p>
-                    <p className="text-lg font-bold text-on-surface">{s.value}</p>
+                    <p className="text-lg font-bold text-on-surface">
+                      {s.value}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -194,9 +215,13 @@ export default function LeaderboardPage() {
             {topPlayers.map((p) => (
               <div
                 key={p.rank}
-                className={`bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6 shadow-sm border-l-4 ${p.borderColor}`}
+                className={`bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6`}
               >
-                <div className={`w-8 text-center ${p.rankStyle}`}>{p.rank}</div>
+                <div
+                  className={`w-8 text-center text-lg font-black text-blue-500`}
+                >
+                  {p.rank}
+                </div>
                 <Image
                   src={p.src}
                   alt={p.name}
@@ -249,7 +274,9 @@ export default function LeaderboardPage() {
                 </p>
               </div>
               <div className="flex items-center text-tertiary gap-1">
-                <span className="material-symbols-outlined text-sm">trending_up</span>
+                <span className="material-symbols-outlined text-sm">
+                  trending_up
+                </span>
                 <span className="text-sm font-bold">+12</span>
               </div>
             </div>
