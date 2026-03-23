@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
 
 const navLinks = [
@@ -14,7 +13,14 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  }
 
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-[0_4px_4px_-1px_rgba(4,43,81,0.06)] dark:shadow-[0_32px_32px_-12px_rgba(0,0,0,0.3)] transition-colors duration-300">
@@ -23,7 +29,9 @@ export default function Header() {
           <Link
             href="/dashboard"
             className="text-2xl font-black italic bg-gradient-to-br from-primary to-primary-fixed bg-clip-text text-transparent tracking-tight"
-          ></Link>
+          >
+            Quizzly Pulse
+          </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map(({ href, label }) => {
               const isActive =
@@ -72,19 +80,16 @@ export default function Header() {
             <span className="material-symbols-outlined">settings</span>
           </Link>
 
-          {/* Account */}
-          <Link
-            href="/login"
-            aria-label="Mi perfil"
-            className="active:scale-95 transition-transform p-1 rounded-full bg-surface-container-high"
+          {/* Logout */}
+          <button
+            onClick={handleLogout}
+            aria-label="Cerrar sesión"
+            className="active:scale-95 transition-transform p-1 rounded-full bg-surface-container-high hover:bg-error/10 hover:text-error"
           >
-            <span
-              className="material-symbols-outlined text-3xl text-primary"
-              style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              account_circle
+            <span className="material-symbols-outlined text-3xl text-on-surface-variant">
+              logout
             </span>
-          </Link>
+          </button>
         </div>
       </div>
     </header>

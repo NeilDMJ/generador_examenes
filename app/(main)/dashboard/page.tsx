@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+import { getAuthCookieName, verifyAuthToken } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import WelcomeBanner from "@/components/dashboard/WelcomeBanner";
 import RecentScoreItem from "@/components/dashboard/RecentScoreItem";
 
@@ -51,6 +56,7 @@ const categories = [
   },
 ];
 
+// Datos de puntajes recientes son estáticos hasta que exista un endpoint de historial
 const recentScores = [
   {
     category: "Ciencia",
@@ -87,10 +93,32 @@ const features = [
   "Ranking Global y Recompensas por Nivel",
 ];
 
-export default function DashboardPage() {
+async function getCurrentUser() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(getAuthCookieName())?.value;
+  if (!token) return null;
+
+  const payload = verifyAuthToken(token);
+  if (!payload) return null;
+
+  return prisma.user.findUnique({
+    where: { id: payload.sub },
+    select: { id: true, name: true, email: true },
+  });
+}
+
+export default async function DashboardPage() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  const displayName = user.name ?? user.email.split("@")[0];
+
   return (
     <main className="flex-grow max-w-7xl mx-auto w-full px-6 py-8 space-y-12">
-      <WelcomeBanner userName="Alex" streakDays={5} />
+      <WelcomeBanner userName={displayName} streakDays={1} />
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -105,7 +133,6 @@ export default function DashboardPage() {
                 Elige un tema para agudizar tu mente
               </p>
             </div>
-            {/* Redirige a la página de todas las categorías */}
             <Link
               href="/categorias"
               className="text-primary font-bold text-sm hover:underline decoration-2 underline-offset-4"
@@ -193,7 +220,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between p-5 bg-gradient-to-r from-secondary to-secondary-fixed-dim rounded-lg text-on-secondary">
                 <div>
                   <p className="text-xs font-bold font-label">Experiencia</p>
-                  <p className="text-2xl font-black font-headline">Nivel 24</p>
+                  <p className="text-2xl font-black font-headline">Nivel 1</p>
                 </div>
                 <span
                   className="material-symbols-outlined text-4xl"

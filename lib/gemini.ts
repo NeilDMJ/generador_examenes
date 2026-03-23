@@ -47,9 +47,11 @@ function buildPrompt(input: GenerateQuizInput) {
   ].join("\n");
 }
 
-export async function generateQuizWithGemini(input: GenerateQuizInput): Promise<GeneratedQuizOutput> {
+export async function generateQuizWithGemini(
+  input: GenerateQuizInput,
+): Promise<GeneratedQuizOutput> {
   const prompt = buildPrompt(input);
-  const model = process.env.GEMINI_MODEL ?? "gemini-2.0-flash";
+  const model = process.env.GEMINI_MODEL ?? "gemini-3.1-flash-lite-preview";
   const apiKey = getGeminiApiKey();
 
   const response = await fetch(
@@ -82,7 +84,10 @@ export async function generateQuizWithGemini(input: GenerateQuizInput): Promise<
     }>;
   };
 
-  const rawText = data.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("") ?? "";
+  const rawText =
+    data.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text ?? "")
+      .join("") ?? "";
 
   if (!rawText) {
     throw new Error("Gemini no devolvio contenido util");
@@ -94,11 +99,14 @@ export async function generateQuizWithGemini(input: GenerateQuizInput): Promise<
   const normalizedQuestions = result.questions.map((question) => {
     const optionsNormalized = question.options.map((option) => option.trim());
     const match = optionsNormalized.find(
-      (option) => option.toLowerCase() === question.correctAnswer.trim().toLowerCase(),
+      (option) =>
+        option.toLowerCase() === question.correctAnswer.trim().toLowerCase(),
     );
 
     if (!match) {
-      throw new Error("Una pregunta generada no contiene la respuesta correcta dentro de options");
+      throw new Error(
+        "Una pregunta generada no contiene la respuesta correcta dentro de options",
+      );
     }
 
     return {

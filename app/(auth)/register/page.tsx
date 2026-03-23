@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import RegisterForm from "@/components/auth/RegisterForm";
+
 export const metadata: Metadata = { title: "Crear Cuenta | Quizzly Pulse" };
 
 export default function RegisterPage() {
@@ -32,72 +34,7 @@ export default function RegisterPage() {
             <h2 className="text-2xl font-headline font-bold text-on-surface mb-8">
               Crear Cuenta
             </h2>
-
-            {/*
-              Conectar con el backend:
-              - action: POST /api/auth/register
-              - Responde redirigiendo a /dashboard tras registro exitoso
-            */}
-            <form className="space-y-5" method="POST" action="/api/auth/register">
-              <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-label font-semibold text-on-surface/80 tracking-wider pl-1"
-                >
-                  Nombre Completo
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  required
-                  className="w-full px-5 py-4 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary text-on-surface placeholder:text-outline-variant transition-all outline-none"
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-label font-semibold text-on-surface/80 tracking-wider pl-1"
-                >
-                  Correo Electrónico
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="w-full px-5 py-4 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary text-on-surface placeholder:text-outline-variant transition-all outline-none"
-                  placeholder="nombre@ejemplo.com"
-                />
-              </div>
-              <div className="space-y-2">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-label font-semibold text-on-surface/80 tracking-wider pl-1"
-                >
-                  Contraseña
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  minLength={8}
-                  className="w-full px-5 py-4 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary text-on-surface placeholder:text-outline-variant transition-all outline-none"
-                  placeholder="Mínimo 8 caracteres"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold rounded-md shadow-lg shadow-primary/20 hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300"
-              >
-                Crear Cuenta
-              </button>
-            </form>
+            <RegisterForm />
           </div>
         </div>
 
