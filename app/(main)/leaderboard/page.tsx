@@ -218,7 +218,7 @@ export default function LeaderboardPage() {
                 className={`bg-surface-container-lowest rounded-lg p-5 flex items-center gap-6`}
               >
                 <div
-                  className={`w-8 text-center text-lg font-black text-blue-500`}
+                  className={`w-8 text-center text-lg font-black text-primary`}
                 >
                   {p.rank}
                 </div>
